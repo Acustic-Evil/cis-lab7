@@ -1,7 +1,7 @@
-package com.lab6.service;
+package com.lab7.service;
 
-import com.lab6.entity.PathSegment;
-import com.lab6.mapper.PathSegmentMapper;
+import com.lab7.entity.PathSegment;
+import com.lab7.mapper.PathSegmentMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

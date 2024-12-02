@@ -1,6 +1,6 @@
-package com.lab6.mapper;
+package com.lab7.mapper;
 
-import com.lab6.entity.PathSegment;
+import com.lab7.entity.PathSegment;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;

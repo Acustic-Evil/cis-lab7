@@ -1,7 +1,7 @@
-package com.lab6.controller;
+package com.lab7.controller;
 
-import com.lab6.entity.PathSegment;
-import com.lab6.service.PathSegmentService;
+import com.lab7.entity.PathSegment;
+import com.lab7.service.PathSegmentService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

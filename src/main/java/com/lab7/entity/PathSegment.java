@@ -1,4 +1,4 @@
-package com.lab6.entity;
+package com.lab7.entity;
 
 import lombok.*;
 

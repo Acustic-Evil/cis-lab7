@@ -20,7 +20,7 @@
         WHERE id = #{id}
     </update>
 
-    <resultMap id="PathSegmentResultMap" type="com.lab6.entity.PathSegment">
+    <resultMap id="PathSegmentResultMap" type="com.lab7.entity.PathSegment">
         <result property="id" column="id"/>
         <result property="pathLength" column="path_length"/>
         <result property="pathName" column="path_name"/>
