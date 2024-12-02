@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.mapper.PathSegmentMapper">
+
+    <!-- Вставка новой записи -->
+    <insert id="insertPathSegment" parameterType="com.example.entity.PathSegment">
+        INSERT INTO path_segment (id, path_length, path_name, is_active)
+        VALUES (#{id}, #{pathLength}, #{pathName}, #{isActive})
+    </insert>
+
+    <!-- Обновление записи -->
+    <update id="updatePathSegment" parameterType="com.example.entity.PathSegment">
+        UPDATE path_segment
+        SET path_name = #{pathName},
+            path_length = #{pathLength},
+            is_active = #{isActive}
+        WHERE id = #{id}
+    </update>
+
+    <resultMap id="PathSegmentResultMap" type="com.lab6.entity.PathSegment">
+        <result property="id" column="id"/>
+        <result property="pathLength" column="path_length"/>
+        <result property="pathName" column="path_name"/>
+        <result property="isActive" column="is_active"/>
+    </resultMap>
+
+    <select id="selectActivePathSegments" resultMap="PathSegmentResultMap">
+        SELECT * FROM path_segment WHERE is_active = TRUE
+    </select>
+
+    <!-- Выбор всех активных записей -->
+    <select id="selectActivePathSegments" resultType="com.example.entity.PathSegment">
+        SELECT *
+        FROM path_segment
+        WHERE is_active = TRUE
+    </select>
+
+    <!-- Удаление записи (логическое) -->
+    <update id="deactivatePathSegment" parameterType="Long">
+        UPDATE path_segment
+        SET is_active = FALSE
+        WHERE id = #{id}
+    </update>
+
+    <!-- Удаление записи (фактическое) -->
+    <delete id="deletePathSegment" parameterType="Long">
+        DELETE FROM path_segment
+        WHERE id = #{id}
+    </delete>
+</mapper>
