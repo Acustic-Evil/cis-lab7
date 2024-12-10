@@ -67,6 +67,7 @@ export default {
           .then(() => {
             this.fetchActiveSegments(); // Refresh the list
             this.fetchInactiveSegments();
+            this.$emit("refreshSegments");
           })
           .catch((error) => {
             console.error("Error deactivating segment:", error);
@@ -78,6 +79,7 @@ export default {
           .then(() => {
             this.fetchActiveSegments(); // Refresh the list
             this.fetchInactiveSegments();
+            this.$emit("refreshSegments");
           })
           .catch((error) => {
             console.error("Error deleting segment:", error);

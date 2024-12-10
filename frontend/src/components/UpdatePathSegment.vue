@@ -7,7 +7,7 @@
     <h1>Update Path Segment</h1>
     <form @submit.prevent="updateSegment">
       <label for="id">ID (Select Existing):</label>
-      <select v-model="id" @change="fetchSegmentDetails">
+      <select v-model="id" @change="fetchSegmentDetails" required>
         <option v-for="segment in segments" :key="segment.id" :value="segment.id">
           {{ segment.id }}
         </option>
@@ -76,7 +76,7 @@ export default {
           .put("http://localhost:8080/path_segment", updatedSegment)
           .then(() => {
             alert("Path segment updated successfully!");
-            this.fetchSegments(); // Обновление списка сегментов после изменения
+            this.$emit("refreshSegments"); // Отправляем событие в родительский компонент
           })
           .catch((error) => {
             console.error("Error updating segment:", error);
@@ -85,6 +85,15 @@ export default {
   },
   mounted() {
     this.fetchSegments(); // Загрузка списка сегментов при открытии компонента
+  },
+  watch: {
+    // Слушаем событие от родителя для обновления списка сегментов
+    "$props.refresh": {
+      handler() {
+        this.fetchSegments();
+      },
+      immediate: true,
+    },
   },
 };
 </script>

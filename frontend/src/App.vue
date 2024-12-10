@@ -4,9 +4,9 @@
 
 <template>
   <div id="app">
-    <AddPathSegment />
-    <PathSegmentList />
-    <UpdatePathSegment />
+    <AddPathSegment @refreshSegments="refreshSegments" />
+    <PathSegmentList ref="pathSegmentList" @refreshSegments="refreshSegments"/>
+    <UpdatePathSegment ref="updatePathSegment" @refreshSegments="refreshSegments"/>
   </div>
 </template>
 
@@ -21,8 +21,19 @@ export default {
     PathSegmentList,
     UpdatePathSegment,
   },
+  methods: {
+    refreshSegments() {
+      // Обновляем список сегментов в таблице
+      this.$refs.pathSegmentList.fetchActiveSegments();
+      this.$refs.pathSegmentList.fetchInactiveSegments();
+
+      // Обновляем список сегментов в компоненте обновления
+      this.$refs.updatePathSegment.fetchSegments();
+    },
+  },
 };
 </script>
+
 
 <style>
 </style>

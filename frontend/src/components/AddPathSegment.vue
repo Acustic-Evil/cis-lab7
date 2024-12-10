@@ -49,6 +49,7 @@ export default {
           .post("http://localhost:8080/path_segment", newSegment)
           .then(() => {
             alert("Path segment added successfully!");
+            this.$emit("refreshSegments"); // Отправляем событие в родительский компонент
           })
           .catch((error) => {
             console.error("Error adding segment:", error);
