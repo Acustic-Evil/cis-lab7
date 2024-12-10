@@ -27,15 +27,22 @@
         <result property="isActive" column="is_active"/>
     </resultMap>
 
-    <select id="selectActivePathSegments" resultMap="PathSegmentResultMap">
-        SELECT * FROM path_segment WHERE is_active = TRUE
-    </select>
-
     <!-- Выбор всех активных записей -->
-    <select id="selectActivePathSegments" resultType="com.example.entity.PathSegment">
+    <select id="selectActivePathSegments" resultType="com.example.entity.PathSegment" resultMap="PathSegmentResultMap">
         SELECT *
         FROM path_segment
         WHERE is_active = TRUE
+    </select>
+
+    <select id="getAllPathSegments" resultType="com.example.entity.PathSegment" resultMap="PathSegmentResultMap">
+        SELECT *
+        FROM path_segment
+    </select>
+
+    <select id="getInactivePathSegments" resultType="com.example.entity.PathSegment" resultMap="PathSegmentResultMap">
+        SELECT *
+        FROM path_segment
+        WHERE is_active = FALSE
     </select>
 
     <!-- Удаление записи (логическое) -->

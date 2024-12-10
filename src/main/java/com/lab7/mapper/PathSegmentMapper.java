@@ -20,7 +20,23 @@ public interface PathSegmentMapper {
             @Result(property = "pathName", column = "path_name"),
             @Result(property = "isActive", column = "is_active")
     })
-    List<PathSegment> selectActivePathSegments();
+    List<PathSegment> getActivePathSegments();
+
+    @Select("SELECT * FROM path_segment")
+    @Results({
+            @Result(property = "pathLength", column = "path_length"),
+            @Result(property = "pathName", column = "path_name"),
+            @Result(property = "isActive", column = "is_active")
+    })
+    List<PathSegment> getAllPathSegments();
+
+    @Select("SELECT * FROM path_segment WHERE is_active = FALSE")
+    @Results({
+            @Result(property = "pathLength", column = "path_length"),
+            @Result(property = "pathName", column = "path_name"),
+            @Result(property = "isActive", column = "is_active")
+    })
+    List<PathSegment> getInactivePathSegments();
 
     @Update("UPDATE path_segment SET is_active = FALSE WHERE id = #{id}")
     void deactivatePathSegment(Long id);

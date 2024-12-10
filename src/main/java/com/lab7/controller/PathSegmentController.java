@@ -12,6 +12,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/path_segment")
 @Tag(name = "Path Segment API", description = "API для работы с путями сегментов")
+@CrossOrigin("http://localhost:5173")
 public class PathSegmentController {
 
     private final PathSegmentService pathSegmentService;
@@ -38,6 +39,18 @@ public class PathSegmentController {
     @Operation(summary = "Получить все активные пути", description = "Возвращает список всех активных путей")
     public List<PathSegment> getActivePathSegments() {
         return pathSegmentService.getActivePathSegments();
+    }
+
+    @GetMapping("/get_all")
+    @Operation(summary = "Получить все пути", description = "Возвращает все пути, даже неактивные")
+    public List<PathSegment> getAllPathSegments() {
+        return pathSegmentService.getAllPathSegments();
+    }
+
+    @GetMapping("/get_inactive")
+    @Operation(summary = "Получить неактивные пути", description = "Возвращает неактивные пути")
+    public List<PathSegment> getInactivePathSegments() {
+        return pathSegmentService.getInactivePathSegments();
     }
 
     @DeleteMapping("/{id}")

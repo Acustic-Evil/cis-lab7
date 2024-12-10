@@ -24,7 +24,7 @@ public class PathSegmentService {
     }
 
     public List<PathSegment> getActivePathSegments() {
-        return pathSegmentMapper.selectActivePathSegments();
+        return pathSegmentMapper.getActivePathSegments();
     }
 
     public void deactivatePathSegment(Long id) {
@@ -33,6 +33,14 @@ public class PathSegmentService {
 
     public void deletePathSegment(Long id) {
         pathSegmentMapper.deletePathSegment(id);
+    }
+
+    public List<PathSegment> getAllPathSegments() {
+       return pathSegmentMapper.getAllPathSegments();
+    }
+
+    public List<PathSegment> getInactivePathSegments() {
+        return pathSegmentMapper.getInactivePathSegments();
     }
 
 }
