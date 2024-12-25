@@ -11,8 +11,11 @@
         <p><strong>Length:</strong> {{ segment.path_length }}</p>
         <p><strong>Name:</strong> {{ segment.path_name }}</p>
         <p><strong>Active:</strong> {{ segment.is_active }}</p>
-        <button @click="deactivateSegment(segment.id)">Deactivate</button>
-        <button @click="deleteSegment(segment.id)">Delete</button>
+        <form @submit.prevent>
+          <button @click="deactivateSegment(segment.id)">Deactivate</button>
+          <button @click="deleteSegment(segment.id)">Delete</button>
+        </form>
+
       </li>
     </ul>
 
